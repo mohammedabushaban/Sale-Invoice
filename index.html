@@ -13,9 +13,8 @@
 <body dir="rtl" id="body">
     <label for="item1"> الاسم :</label>
     <input type="text" name="customer" id="customer" width="10px">
-
+<br><br>
     <form action="" id="form">
-        <div id="totalItem">المجموع : </div>
         <input type="checkbox" id="item1" name="item1" value="بلوزة" data-price="15" onclick="totalItem()">
         <label for="item1"> بلوزة</label><br>
         <input type="checkbox" id="item2" name="item2" value="بنطلون" data-price="25" onclick="totalItem()">
@@ -37,14 +36,15 @@
         <input type="checkbox" id="item10" name="item10" value="جوارب 2" data-price="2" onclick="totalItem()">
         <label for="item10">جوارب 2</label><br>
         <input type="checkbox" id="item11" name="item11" value="جوارب5" data-price="5" onclick="totalItem()">
-        <label for="item11">جوارب 5</label><br>
-
+        <label for="item11">جوارب 5</label><br><br>
+        <div>المجموع : <span id="totalItem">0</span> </div><br>
         <label for="item9" "> نقداً :</label>
         <input type="number" name="cach" id="cach" style="width: 60px;" value="0" min="0">
         <label for="item10"> الخصم :</label>
         <input type="number" name="disc" id="disc" style="width: 60px;" value="0" min="0">
         <hr>
         <br>
+        
     </form>
 
     <div class="ticket">
