@@ -11,10 +11,41 @@
 </head>
 
 <body dir="rtl" id="body">
-    <label for="item1"> الاسم :</label>
-    <input type="text" name="customer" id="customer" width="10px">
-<br><br>
+    <div class="flex-container">
+        <div class="flex-child">
+            <div class="ticket">
+                <span id="customerName"></span><hr>
+                <img src="https://logos-world.net/wp-content/uploads/2020/04/Huawei-Logo.png" alt="Logo">
+                <div class="centered">أهلا وسهلا
+                    <p id="date" dir="ltr"></p>
+                </div>
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <th class="description">اسم الصنف</th>
+                            <th class="price">السعر</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        <!-- <tr>
+                            <td class="description">المجموع</td>
+                            <td class="price">555</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+                <p class="centered">فاتورة بيع</p>
+            </div>
+    
+            <div id="new"></div>
+            <button id="btnPrint" class="hidden-print">طباعة </button>
+        </div>
+
+        
+<div class="flex-child magenta">
+
     <form action="" id="form">
+        <label for="item1"> الاسم :</label>
+        <input type="text" name="customer" id="customer" width="10px"><br><br>
         <input type="checkbox" id="item1" name="item1" value="بلوزة" data-price="15" onclick="totalItem()">
         <label for="item1"> بلوزة</label><br>
         <input type="checkbox" id="item2" name="item2" value="بنطلون" data-price="25" onclick="totalItem()">
@@ -29,7 +60,7 @@
         <label for="item6">جلباب</label><br>
         <input type="checkbox" id="item7" name="item7" value="قميص مدرسة" data-price="20" onclick="totalItem()">
         <label for="item7">قميص مدرسة</label><br>
-        <input type="checkbox" id="item8" name="item8" value=حذاء" data-price="25" onclick="totalItem()">
+        <input type="checkbox" id="item8" name="item8" value="حذاء" data-price="25" onclick="totalItem()">
         <label for="item8">حذاء</label><br>
         <input type="checkbox" id="item9" name="item9" value="جوارب 1" data-price="1" onclick="totalItem()">
         <label for="item9">جوارب 1</label><br>
@@ -38,40 +69,16 @@
         <input type="checkbox" id="item11" name="item11" value="جوارب5" data-price="5" onclick="totalItem()">
         <label for="item11">جوارب 5</label><br><br>
         <div>المجموع : <span id="totalItem">0</span> </div><br>
-        <label for="item9" "> نقداً :</label>
+        <label for="cach" "> نقداً :</label>
         <input type="number" name="cach" id="cach" style="width: 60px;" value="0" min="0">
-        <label for="item10"> الخصم :</label>
+        <label for="disc"> الخصم :</label>
         <input type="number" name="disc" id="disc" style="width: 60px;" value="0" min="0">
         <hr>
         <br>
-        
     </form>
+</div>
+</div>
 
-    <div class="ticket">
-        <img src="https://logos-world.net/wp-content/uploads/2020/04/Huawei-Logo.png" alt="Logo">
-        <div class="centered">أهلا وسهلا
-            <p id="date" dir="ltr"></p>
-        </div>
-        <table id="table">
-            <thead>
-                <tr>
-                    <th class="description">اسم الصنف</th>
-                    <th class="price">السعر</th>
-                </tr>
-            </thead>
-            <tbody id="tbody">
-                <!-- <tr>
-                    <td class="description">المجموع</td>
-                    <td class="price">555</td>
-                </tr> -->
-            </tbody>
-        </table>
-        <p class="centered">فاتورة بيع</p>
-    </div>
-
-    <div id="new"></div>
-
-    <button id="btnPrint" class="hidden-print">طباعة </button>
     <script src="script.js"></script>
 </body>
 
