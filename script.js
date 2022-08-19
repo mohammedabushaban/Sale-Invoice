@@ -1,14 +1,45 @@
-const $btnPrint = document.querySelector("#btnPrint");
+const btnPrint = document.querySelector("#btnPrint");
 const tbl = document.getElementById("table");
 const tblBody = document.getElementById("tbody");
 const customer = document.getElementById("customer").value;
 const form = document.getElementById("form");
 const dateField = document.getElementById("date");
 const totalItemPrice = document.getElementById("totalItem");
-
+const container = document.querySelector("flex-child magenta")
 let totalPrice = 0;
+let items = [];
 
-$btnPrint.addEventListener("click", () => {
+function addItem(item) {
+  elementIndex = item.name.charAt(item.name.length - 1);
+  index = Number(elementIndex);
+
+  if (!items.includes(item.name)) {
+    items.push(item.name);
+    const tr = document.createElement("tr");
+    const td1 = document.createElement("td");
+    const td2 = document.createElement("td");
+    const data = document.createTextNode(item.value);
+    const cellPrice = document.createTextNode(
+      Number(item.dataset.price) + " شيكل "
+    );
+    td1.classList.add("description");
+    td2.classList.add("price");
+    tr.setAttribute("id", index)
+
+    td1.appendChild(data);
+    td2.appendChild(cellPrice);
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+
+    tblBody.appendChild(tr);
+  }
+}
+
+
+btnPrint.addEventListener("click", () => {
+  const customer = document.getElementById('customer').value
+  document.getElementById('customerName').innerHTML = `الاسم : ${customer}`
+  
   for (let i = 0; i < form.length; i++) {
     if (form[i].checked) {
       addItem(form[i]);
@@ -45,7 +76,7 @@ $btnPrint.addEventListener("click", () => {
   element.appendChild(para);
 
   form.remove();
-  $btnPrint.remove();
+  btnPrint.remove();
   window.print();
   location.reload();
 });
@@ -61,28 +92,14 @@ function totalItem() {
   totalItemPrice.innerHTML = total;
 }
 
-let items = [];
-function addItem(item) {
-  if (!items.includes(item.name)) {
-    items.push(item.name);
-    const tr = document.createElement("tr");
-    const td1 = document.createElement("td");
-    const td2 = document.createElement("td");
-    const data = document.createTextNode(item.value);
-    const cellPrice = document.createTextNode(
-      Number(item.dataset.price) + " شيكل "
-    );
-    td1.classList.add("description");
-    td2.classList.add("price");
-
-    td1.appendChild(data);
-    td2.appendChild(cellPrice);
-    tr.appendChild(td1);
-    tr.appendChild(td2);
-
-    tblBody.appendChild(tr);
-  }
+function removeItem(item) {
+  elementIndex = item.name.charAt(item.name.length - 1);
+  index = Number(elementIndex);
+  items.splice(index);
+  console.log(items);
+  // tbl.deleteRow(index)
 }
+
 
 // tdTotal.classList.add("description");
 // tdSumPrice.classList.add("price");
