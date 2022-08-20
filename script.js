@@ -4,45 +4,72 @@ const tblBody = document.getElementById("tbody");
 const customer = document.getElementById("customer").value;
 const form = document.getElementById("form");
 const dateField = document.getElementById("date");
+const timeField = document.getElementById("time");
 const totalItemPrice = document.getElementById("totalItem");
-const container = document.querySelector("flex-child magenta")
+const container = document.querySelector("flex-child magenta");
+
 let totalPrice = 0;
 let items = [];
+let i = 1;
 
 function addItem(item) {
-  elementIndex = item.name.charAt(item.name.length - 1);
-  index = Number(elementIndex);
-
+  // Get element number of id
+  index = Number(item.name.charAt(item.name.length - 1));
+  // Check if item is selected /checked and add to list
   if (!items.includes(item.name)) {
     items.push(item.name);
     const tr = document.createElement("tr");
-    const td1 = document.createElement("td");
-    const td2 = document.createElement("td");
-    const data = document.createTextNode(item.value);
-    const cellPrice = document.createTextNode(
-      Number(item.dataset.price) + " شيكل "
-    );
-    td1.classList.add("description");
-    td2.classList.add("price");
-    tr.setAttribute("id", index)
+    const tdItemNum = document.createElement("td");
+    const tdType = document.createElement("td");
+    const tdQuantity = document.createElement("td");
+    const tdPrice = document.createElement("td");
+    const tdTotal = document.createElement("td");
 
-    td1.appendChild(data);
-    td2.appendChild(cellPrice);
-    tr.appendChild(td1);
-    tr.appendChild(td2);
+    const num = document.createTextNode(i++);
+    const type = document.createTextNode(item.value);
+    const quantity = document.createTextNode(1);
+    const itemPrice = document.createTextNode(Number(item.dataset.price));
+    const cellTotal = document.createTextNode(Number(item.dataset.price) * 1);
+
+    tdType.classList.add("description");
+    tdPrice.classList.add("price");
+    tr.setAttribute("id", index);
+
+    tdItemNum.appendChild(num);
+    tdType.appendChild(type);
+    tdQuantity.appendChild(quantity);
+    tdPrice.appendChild(itemPrice);
+    tdTotal.appendChild(cellTotal);
+
+    tr.appendChild(tdItemNum);
+    tr.appendChild(tdType);
+    tr.appendChild(tdQuantity);
+    tr.appendChild(tdPrice);
+    tr.appendChild(tdTotal);
 
     tblBody.appendChild(tr);
   }
 }
 
+function totalItem() {
+  let total = 0;
+  for (var i = 0; i < form.length; i++) {
+    if (form[i].checked) {
+      addItem(form[i]);
+      total += Number(form[i].dataset.price);
+    }
+  }
+  totalItemPrice.innerHTML = total;
+}
 
-btnPrint.addEventListener("click", () => {
-  const customer = document.getElementById('customer').value
-  document.getElementById('customerName').innerHTML = `الاسم : ${customer}`
-  
+const print = function () {
+  const customer = document.getElementById("customer").value;
+  document.getElementById("customerName").innerHTML = `الاسم : ${customer}`;
+
   for (let i = 0; i < form.length; i++) {
     if (form[i].checked) {
       addItem(form[i]);
+      console.log(form[i]);
       totalPrice = totalPrice + Number(form[i].dataset.price);
     }
 
@@ -63,43 +90,46 @@ btnPrint.addEventListener("click", () => {
   trSum.appendChild(tdSumPrice);
   tblBody.appendChild(trSum);
 
-  dateField.innerHTML = new Date().toLocaleString();
+  dateField.innerHTML = new Date().toLocaleDateString() + " : التاريخ";
+  timeField.innerHTML = new Date().toLocaleTimeString() + ": الوقت";
+
   const cach = document.getElementById("cach").value;
   const disc = document.getElementById("disc").value;
 
-  const para = document.createElement("p");
-  const node = document.createTextNode(
-    `نقداً :  ${cach} شيكل  || خصم : ${disc} شيكل `
-  );
-  para.appendChild(node);
-  const element = document.getElementById("body");
-  element.appendChild(para);
+  // check if Cach less than disc
+  if (disc > cach || cach < 0) {
+    alert("نسبة الخصم اكبر من المدفوع !");
+    location.reload();
+  } else {
+    const para = document.createElement("p");
+    const node = document.createTextNode(
+      `نقداً :  ${cach} شيكل  || خصم : ${disc} شيكل `
+    );
+    para.appendChild(node);
+    const element = document.getElementById("body");
+    element.appendChild(para);
 
-  form.remove();
-  btnPrint.remove();
-  window.print();
-  location.reload();
+    form.remove();
+    btnPrint.remove();
+    window.print();
+    location.reload();
+  }
+};
+
+btnPrint.addEventListener("click", print);
+document.addEventListener("keydown", (e) => {
+  if (e.key === "F2") {
+    print();
+  }
 });
 
-function totalItem() {
-  let total = 0;
-  for (var i = 0; i < form.length; i++) {
-    if (form[i].checked) {
-      addItem(form[i]);
-      total += Number(form[i].dataset.price);
-    }
-  }
-  totalItemPrice.innerHTML = total;
-}
-
-function removeItem(item) {
-  elementIndex = item.name.charAt(item.name.length - 1);
-  index = Number(elementIndex);
-  items.splice(index);
-  console.log(items);
-  // tbl.deleteRow(index)
-}
-
+// function removeItem(item) {
+//   elementIndex = item.name.charAt(item.name.length - 1);
+//   index = Number(elementIndex);
+//   items.splice(index);
+//   console.log(items);
+//   tbl.deleteRow(index)
+// }
 
 // tdTotal.classList.add("description");
 // tdSumPrice.classList.add("price");
