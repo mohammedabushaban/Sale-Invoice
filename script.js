@@ -18,6 +18,9 @@ function addItem(item) {
   // Check if item is selected /checked and add to list
   if (!items.includes(item.name)) {
     items.push(item.name);
+
+    let qty = Number(document.getElementById(`quantity-${index}`).value) || 1
+
     const tr = document.createElement("tr");
     const tdItemNum = document.createElement("td");
     const tdType = document.createElement("td");
@@ -27,9 +30,9 @@ function addItem(item) {
 
     const num = document.createTextNode(i++);
     const type = document.createTextNode(item.value);
-    const quantity = document.createTextNode(1);
+    const quantity = document.createTextNode(qty);
     const itemPrice = document.createTextNode(Number(item.dataset.price));
-    const cellTotal = document.createTextNode(Number(item.dataset.price) * 1);
+    const cellTotal = document.createTextNode(Number(item.dataset.price) * qty);
 
     tdType.classList.add("description");
     tdPrice.classList.add("price");
@@ -69,7 +72,6 @@ const print = function () {
   for (let i = 0; i < form.length; i++) {
     if (form[i].checked) {
       addItem(form[i]);
-      console.log(form[i]);
       totalPrice = totalPrice + Number(form[i].dataset.price);
     }
 
