@@ -14,10 +14,11 @@
     <div class="flex-container">
         <div class="flex-child">
             <div class="ticket">
-                <span id="customerName"></span><hr>
-                <img src="https://logos-world.net/wp-content/uploads/2020/04/Huawei-Logo.png" alt="Logo">
+                <span id="customerName"></span>
+                <hr>
+                <img src="https://logos-world.net/wp-content/uploads/2020/04/Huawei-Logo.png" alt="Logo" width="150px">
                 <div class="centered">أهلا وسهلا
-                   
+
                 </div>
                 <div>
                     <span id="date" dir="ltr"> : التاريخ</span><br>
@@ -42,73 +43,77 @@
                 </table>
                 <p class="centered">فاتورة بيع</p>
             </div>
-    
             <div id="new"></div>
             <button id="btnPrint" class="hidden-print">طباعة </button>
         </div>
 
-        
-<div class="flex-child magenta">
 
-    <form action="" id="form">
-        <label for="item1"> الاسم :</label>
-        <input type="text" name="customer" id="customer" width="10px"><br><br>
+        <div class="flex-child magenta">
 
-        <input type="checkbox" id="item-1" name="item1" value="بلوزة" data-price="15" onclick="totalItem()">
-        <input type="number" id="quantity-1" name="quantity-1" min="1" style="width: 40px;" value="1">
-        <label for="item1"> بلوزة</label><br>
+            <form action="" id="form">
+                <label for="item1"> الاسم :</label>
+                <input type="text" name="customer" id="customer" width="10px"><br><br>
 
-        <input type="checkbox" id="item-2" name="item2" value="بنطلون" data-price="25" onclick="totalItem()">
-        <input type="number" id="quantity-2" name="quantity-2" min="1" style="width: 40px;" value="1">
-        <label for="item2"> بنطلون 25 </label><br>
+                <input type="checkbox" id="item-1" name="item1" value="بلوزة" data-price="15" onclick="checkedItem()">
+                <input type="number" id="quantity-1" name="quantity-1" min="1" style="width: 40px;" value="1">
+                <label for="item1"> بلوزة</label><br>
 
-        <input type="checkbox" id="item-3" name="item3" value="بنطلون 30" data-price="30" onclick="totalItem()">
-        <input type="number" id="quantity-3" name="quantity-3" min="1" style="width: 40px;" value="1">
-        <label for="item3">بنطلون 30 </label><br>
+                <input type="checkbox" id="item-2" name="item2" value="بنطلون" data-price="25" onclick="checkedItem()">
+                <input type="number" id="quantity-2" name="quantity-2" min="1" style="width: 40px;" value="1">
+                <label for="item2"> بنطلون 25 </label><br>
 
-        <input type="checkbox" id="item-4" name="item4" value="مريول اعدادي" data-price="40" onclick="totalItem()">
-        <input type="number" id="quantity-4" name="quantity-4" min="1" style="width: 40px;" value="1">
-        <label for="item4">مريول اعدادي</label><br>
+                <input type="checkbox" id="item-3" name="item3" value="بنطلون 30" data-price="30"
+                    onclick="checkedItem()">
+                <input type="number" id="quantity-3" name="quantity-3" min="1" style="width: 40px;" value="1">
+                <label for="item3">بنطلون 30 </label><br>
 
-        <input type="checkbox" id="item-5" name="item5" value="مريول ابتدائي" data-price="25" onclick="totalItem()">
-        <input type="number" id="quantity-5" name="quantity-5" min="1" style="width: 40px;" value="1">
-        <label for="item5">مريول ابتدائي</label><br>
+                <input type="checkbox" id="item-4" name="item4" value="مريول اعدادي" data-price="40"
+                    onclick="checkedItem()">
+                <input type="number" id="quantity-4" name="quantity-4" min="1" style="width: 40px;" value="1">
+                <label for="item4">مريول اعدادي</label><br>
 
-        <input type="checkbox" id="item-6" name="item6" value="جلباب" data-price="50" onclick="totalItem()">
-        <input type="number" id="quantity-6" name="quantity-6" min="1" style="width: 40px;" value="1">
-        <label for="item6">جلباب</label><br>
+                <input type="checkbox" id="item-5" name="item5" value="مريول ابتدائي" data-price="25"
+                    onclick="checkedItem()">
+                <input type="number" id="quantity-5" name="quantity-5" min="1" style="width: 40px;" value="1">
+                <label for="item5">مريول ابتدائي</label><br>
 
-        <input type="checkbox" id="item-7" name="item7" value="قميص مدرسة" data-price="20" onclick="totalItem()">
-        <input type="number" id="quantity-7" name="quantity-7" min="1" style="width: 40px;" value="1">
-        <label for="item7">قميص مدرسة</label><br>
-        
-        <input type="checkbox" id="item-8" name="item8" value="حذاء" data-price="25" onclick="totalItem()">
-        <input type="number" id="quantity-8" name="quantity-8" min="1" style="width: 40px;" value="1">
-        <label for="item8">حذاء</label><br>
+                <input type="checkbox" id="item-6" name="item6" value="جلباب" data-price="50" onclick="checkedItem()">
+                <input type="number" id="quantity-6" name="quantity-6" min="1" style="width: 40px;" value="1">
+                <label for="item6">جلباب</label><br>
 
-        <input type="checkbox" id="item-9" name="item9" value="جوارب 1" data-price="1" onclick="totalItem()">
-        <input type="number" id="quantity-9" name="quantity-9" min="1" style="width: 40px;" value="1">
-        <label for="item9">جوارب 1</label><br>
+                <input type="checkbox" id="item-7" name="item7" value="قميص مدرسة" data-price="20"
+                    onclick="checkedItem()">
+                <input type="number" id="quantity-7" name="quantity-7" min="1" style="width: 40px;" value="1">
+                <label for="item7">قميص مدرسة</label><br>
 
-        <input type="checkbox" id="item-10" name="item10" value="جوارب 2" data-price="2" onclick="totalItem()">
-        <input type="number" id="quantity-10" name="quantity-10" min="1" style="width: 40px;" value="1">
-        <label for="item10">جوارب 2</label><br>
+                <input type="checkbox" id="item-8" name="item8" value="حذاء" data-price="25" onclick="checkedItem()">
+                <input type="number" id="quantity-8" name="quantity-8" min="1" style="width: 40px;" value="1">
+                <label for="item8">حذاء</label><br>
 
-        <input type="checkbox" id="item-11" name="item11" value="جوارب5" data-price="5" onclick="totalItem()">
-        <input type="number" id="quantity-11" name="quantity-11" min="1" style="width: 40px;" value="1">
-        <label for="item11">جوارب 5</label><br><br>
+                <input type="checkbox" id="item-9" name="item9" value="جوارب 1" data-price="1" onclick="checkedItem()">
+                <input type="number" id="quantity-9" name="quantity-9" min="1" style="width: 40px;" value="1">
+                <label for="item9">جوارب 1</label><br>
 
-        
-        <div>المجموع : <span id="totalItem">0</span> </div><br>
-        <label for="cach" "> نقداً :</label>
-        <input type="number" name="cach" id="cach" style="width: 60px;" value="0" min="0">
-        <label for="disc"> الخصم :</label>
-        <input type="number" name="disc" id="disc" style="width: 60px;" value="0" min="0">
-        <hr>
-        <br>
-    </form>
-</div>
-</div>
+                <input type="checkbox" id="item-10" name="item10" value="جوارب 2" data-price="2"
+                    onclick="checkedItem()">
+                <input type="number" id="quantity-10" name="quantity-10" min="1" style="width: 40px;" value="1">
+                <label for="item10">جوارب 2</label><br>
+
+                <input type="checkbox" id="item-11" name="item11" value="جوارب5" data-price="5" onclick="checkedItem()">
+                <input type="number" id="quantity-11" name="quantity-11" min="1" style="width: 40px;" value="1">
+                <label for="item11">جوارب 5</label><br><br>
+
+
+                <div>المجموع : <span id="totalItem">0</span> </div><br>
+                <label for="cach" "> نقداً :</label>
+        <input type=" number" name="cach" id="cach" style="width: 60px;" value="0" min="0">
+                    <label for="disc"> الخصم :</label>
+                    <input type="number" name="disc" id="disc" style="width: 60px;" value="0" min="0">
+                    <hr>
+                    <br>
+            </form>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

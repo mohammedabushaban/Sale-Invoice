@@ -19,7 +19,7 @@ function addItem(item) {
   if (!items.includes(item.name)) {
     items.push(item.name);
 
-    let qty = Number(document.getElementById(`quantity-${index}`).value) || 1
+    let qty = Number(document.getElementById(`quantity-${index}`).value) || 1;
 
     const tr = document.createElement("tr");
     const tdItemNum = document.createElement("td");
@@ -33,6 +33,10 @@ function addItem(item) {
     const quantity = document.createTextNode(qty);
     const itemPrice = document.createTextNode(Number(item.dataset.price));
     const cellTotal = document.createTextNode(Number(item.dataset.price) * qty);
+
+    totalPrice = totalPrice + Number(item.dataset.price * qty);
+    // This total for HTML Page View
+    totalItemPrice.innerHTML = totalPrice;
 
     tdType.classList.add("description");
     tdPrice.classList.add("price");
@@ -54,15 +58,13 @@ function addItem(item) {
   }
 }
 
-function totalItem() {
-  let total = 0;
+function checkedItem() {
   for (var i = 0; i < form.length; i++) {
     if (form[i].checked) {
       addItem(form[i]);
-      total += Number(form[i].dataset.price);
+      // total += Number(form[i].dataset.price);
     }
   }
-  totalItemPrice.innerHTML = total;
 }
 
 const print = function () {
@@ -72,7 +74,7 @@ const print = function () {
   for (let i = 0; i < form.length; i++) {
     if (form[i].checked) {
       addItem(form[i]);
-      totalPrice = totalPrice + Number(form[i].dataset.price);
+      // totalPrice = totalPrice + Number(form[i].dataset.price);
     }
 
     tbl.appendChild(tblBody);
@@ -83,7 +85,7 @@ const print = function () {
   const trSum = document.createElement("tr");
   const tdTotal = document.createElement("td");
   const tdTotalText = document.createTextNode("المــــجــــمـــوع");
-  tdTotal.setAttribute("colspan",'4')
+  tdTotal.setAttribute("colspan", "4");
   const tdSumPrice = document.createElement("td");
   const tdTotalPrice = document.createTextNode(totalPrice);
 
