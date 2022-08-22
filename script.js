@@ -82,9 +82,10 @@ const print = function () {
 
   const trSum = document.createElement("tr");
   const tdTotal = document.createElement("td");
-  const tdTotalText = document.createTextNode("المجموع");
+  const tdTotalText = document.createTextNode("المــــجــــمـــوع");
+  tdTotal.setAttribute("colspan",'4')
   const tdSumPrice = document.createElement("td");
-  const tdTotalPrice = document.createTextNode(totalPrice + " شيكل ");
+  const tdTotalPrice = document.createTextNode(totalPrice);
 
   tdTotal.appendChild(tdTotalText);
   tdSumPrice.appendChild(tdTotalPrice);

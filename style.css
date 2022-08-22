@@ -10,6 +10,9 @@ table {
     border-top: 1px solid black;
     border-collapse: collapse;
     padding-left: 10px;
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align:center;
 }
 
 td.description,
@@ -21,16 +24,16 @@ th.description {
 
 td.quantity,
 th.quantity {
-    width: 60px;
-    max-width: 60px;
+    width: 83px;
+    max-width: 83px;
     word-break: break-all;
     padding-left: 10px;
 }
 
 td.price,
 th.price {
-    width: 80px;
-    max-width: 80px;
+    width: 86px;
+    max-width: 86px;
     word-break: break-all;
     padding-left: 10px;
 }
