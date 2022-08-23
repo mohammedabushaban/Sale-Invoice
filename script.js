@@ -14,11 +14,15 @@ let i = 1;
 
 function addItem(item) {
   // Get element number of id
-  index = Number(item.name.charAt(item.name.length - 1));
+  // index = Number(item.name.charAt(item.name.length - 1));
+  // index = Number(item.name.slice(-2));
+  index = Number(item.id.split("-").pop());
+
   // Check if item is selected /checked and add to list
   if (!items.includes(item.name)) {
     items.push(item.name);
 
+    console.log(index);
     let qty = Number(document.getElementById(`quantity-${index}`).value) || 1;
 
     const tr = document.createElement("tr");
